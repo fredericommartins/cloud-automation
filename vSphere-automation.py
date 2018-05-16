@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from urllib3 import exceptions
 from warnings import filterwarnings
 
