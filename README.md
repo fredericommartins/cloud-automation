@@ -1,2 +1,2 @@
-# cloud-automation
+# Cloud Automation
 VMWare Products Automation
