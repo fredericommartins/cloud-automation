@@ -9,5 +9,5 @@ filterwarnings("ignore", category=exceptions.InsecureRequestWarning)
 from nagini import Nagini
 
 
-api = Nagini(host="vrops-hostname.fqdn", user_pass=("username", "password"))
-print api.get_resources(name='vcenter-hostname', resourceKind="VirtualMachine")
+api = Nagini(host="vrops.example.com", user_pass=("username", "password"))
+print api.get_resources(name='vcenter.example.com', resourceKind="VirtualMachine")
