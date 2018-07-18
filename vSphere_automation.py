@@ -171,22 +171,23 @@ class vSphere(object):
             print("DRS Group '{0}' {1}ed in {2}".format(group_name, operation, cluster.name))
 
 
-username = getuser()
-password = getpass()
+if __name__ == "__main__":
+    username = getuser()
+    password = getpass()
 
-sat = Satellite(username, password)
-api = vSphere(username, password)
+    sat = Satellite(username, password)
+    api = vSphere(username, password)
 
-sat.GetSubscriptions()
+    sat.GetSubscriptions()
 
-for location in api.hosts.keys():
-    #api.SetCustomFields(location, sat.subscriptions['hosts'], 'RHEL')
-    #api.SetCustomFields(location, Windows.hosts[location], 'Windows')
-    #api.CreateAntiAffinityRule(api.FindLocalCluster(location, '{0}ClusterASO_DEV'.format(location[:4].capitalize())))
-    api.CreateDRSGroup(api.FindLocalCluster(location, '{0}ClusterASO'.format(location[:4].capitalize())), 'RHEL', sat.subscriptions['hosts'])
-    
-    #print location.capitalize(), 'Physical Hosts:'
-    #print ', '.join([each.name for each in api.GetPhysicalHosts(location, sat.subscriptions['hosts'])])
+    for location in api.hosts.keys():
+        #api.SetCustomFields(location, sat.subscriptions['hosts'], 'RHEL')
+        #api.SetCustomFields(location, Windows.hosts[location], 'Windows')
+        #api.CreateAntiAffinityRule(api.FindLocalCluster(location, '{0}ClusterASO_DEV'.format(location[:4].capitalize())))
+        api.CreateDRSGroup(api.FindLocalCluster(location, '{0}ClusterASO'.format(location[:4].capitalize())), 'RHEL', sat.subscriptions['hosts'])
 
-    #print location.capitalize(), 'Virtual Machines:'
-    #print ', '.join([each.name for each in api.GetVirtualMachines(location)]) # each.summary.config.guestFullName
+        #print location.capitalize(), 'Physical Hosts:'
+        #print ', '.join([each.name for each in api.GetPhysicalHosts(location, sat.subscriptions['hosts'])])
+
+        #print location.capitalize(), 'Virtual Machines:'
+        #print ', '.join([each.name for each in api.GetVirtualMachines(location)]) # each.summary.config.guestFullName
