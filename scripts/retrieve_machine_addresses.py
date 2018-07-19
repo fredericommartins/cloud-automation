@@ -1,6 +1,5 @@
 from getpass import getpass, getuser
 from socket import error, inet_aton
-from subprocess import PIPE, Popen
 from textwrap import dedent
 
 from ..inventory import hosts
